@@ -15,6 +15,9 @@ const io = new Server(server, {
 });
 
 app.use(cors());
+app.get('/test', (req, res) => {
+  res.json({ dirname: __dirname, files: require('fs').readdirSync(__dirname) });
+});
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../client')));
 
